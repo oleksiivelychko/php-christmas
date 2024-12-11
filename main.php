@@ -8,6 +8,7 @@ pcntl_signal(SIGINT, function () {
 });
 
 $tree = new ChristmasTree(...getDimensions());
+$clearTerminal = initClearTerminal();
 
 while (true) {
     pcntl_signal_dispatch();
@@ -16,10 +17,10 @@ while (true) {
 
     sleep(1);
 
-    clearTerminal();
+    call_user_func($clearTerminal[PHP_OS]);
 }
 
-function clearTerminal(): void
+function initClearTerminal(): array
 {
     $clearMap = [
         'Darwin' => function () { system('clear'); },
@@ -32,7 +33,7 @@ function clearTerminal(): void
         exit(1);
     }
 
-    call_user_func($clearMap[PHP_OS]);
+    return $clearMap;
 }
 
 function getDimensions(): array
