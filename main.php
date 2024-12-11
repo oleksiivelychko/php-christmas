@@ -3,7 +3,7 @@
 include_once 'christmas-tree.php';
 
 pcntl_signal(SIGINT, function () {
-    echo "\n\nCtrl+C pressed...\n\nBye bye... Have yourself a Merry Christmas and Happy New Year!\n";
+    echo "\nBye bye... Have yourself a Merry Christmas and Happy New Year!\n";
     exit(0);
 });
 
@@ -29,7 +29,7 @@ function initClearTerminal(): array
     ];
 
     if (!array_key_exists(PHP_OS, $clearMap)) {
-        echo sprintf("Platform %s is undefined!", PHP_OS);
+        echo sprintf("OS %s does not support!", PHP_OS);
         exit(1);
     }
 
