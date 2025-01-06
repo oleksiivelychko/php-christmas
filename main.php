@@ -7,7 +7,7 @@ pcntl_signal(SIGINT, function () {
     exit(0);
 });
 
-$tree = new ChristmasTree(...getDimensions());
+$tree = new ChristmasTree(80, 20);
 $clearTerminal = initClearTerminal();
 
 while (true) {
@@ -36,20 +36,3 @@ function initClearTerminal(): array
     return $clearMap;
 }
 
-function getDimensions(): array
-{
-    $cols = (int) exec('tput cols');
-    $rows = (int) exec('tput lines');
-
-    $remainder = $cols % 2;
-    if (0 !== $remainder) {
-        $cols -= $remainder;
-    }
-
-    $remainder = $rows % 10;
-    if (0 !== $remainder) {
-        $rows -= $remainder;
-    }
-
-    return [$cols / 2, $rows / 2];
-}
