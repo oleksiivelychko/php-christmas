@@ -37,12 +37,11 @@ readonly class ChristmasTree
             ["🔴", "🟡", "🔵", "🟣", "🟠"],
         );
 
-        $ledge = [];
         for ($i = 0; $i < $count; $i++) {
             $ledge[] = $garland[rand(0, count($garland)-1)];
         }
 
-        return implode('', $ledge);
+        return implode('', $ledge ?? []);
     }
 
     private function randomSnow(int $garlandCount = 0): string
