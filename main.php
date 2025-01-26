@@ -3,7 +3,7 @@
 include_once 'christmas-tree.php';
 
 pcntl_signal(SIGINT, function () {
-    echo "\nBye bye... Have yourself a Merry Christmas and Happy New Year!\n";
+    echo "\nBye bye... Have yourself a Merry Christmas and Happy New Year.\n";
     exit(0);
 });
 
